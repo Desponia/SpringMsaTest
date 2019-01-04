@@ -15,12 +15,13 @@ public class ProductRemoteServiceImpl implements ProductRemoteService {
     }
 
     @Override
-    @HystrixCommand(fallbackMethod = "getProductInfoFallback")
+    @HystrixCommand(commandKey = "productInfo", fallbackMethod = "getProductInfoFallback")
     public String getProductInfo(String productId) {
         return this.restTemplate.getForObject(url + productId, String.class);
     }
 
-    public String getProductInfoFallback(String productId) {
+    public String getProductInfoFallback(String productId, Throwable throwable) {
+        System.out.println("throwable ==> " + throwable);
         return "[ this product is sold out ]";
     }
 }
