@@ -5,6 +5,10 @@ spring:
   application:
     name: display
 
+product:
+  ribbon:
+    listOfServers: localhost:8082
+
 hystrix:
   command:
     productInfo:
