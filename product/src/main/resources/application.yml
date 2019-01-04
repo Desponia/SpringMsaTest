@@ -4,3 +4,10 @@ server:
 spring:
   application:
     name: product
+
+eureka:
+  instance:
+    preper-ip-address: true
+  client:
+    server-url:
+      defaultZone: http://127.0.0.1:8761/eureka
